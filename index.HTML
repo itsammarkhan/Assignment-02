@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Library </title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&family=Lobster&display=swap" rel="stylesheet">
+</head>
+<header class="header">
+	
+	<nav class="navbar">
+   			<a href="#">Home</a>
+   			<a href="Categories.html">Categories</a>
+   			<a href="Cart.html">Cart</a>
+   			<a href="contact.html">Contact Us</a>
+	</nav>
+	<a href="#" class="logo" ><span style="color: rgb(238, 255, 1); font-weight: 10px; font-size: 50px; letter-spacing: 6px; text-decoration: none;">LIBR</span><span style="color: rgb(187, 32, 32);font-weight: 10px; font-size: 50px;  letter-spacing: 6px; text-decoration: none;">ARY</span ></a>
+</header>
+	<body>
+		<div class="w3-content w3-section" style="max-width:100% ;">
+			<img class="mySlides" src="https://c0.wallpaperflare.com/preview/469/70/385/background-book-bookcase-books.jpg" style="width:100%">
+			<img class="mySlides" src="https://c1.wallpaperflare.com/preview/608/164/965/library-books-education-knowledge.jpg" style="width:100%">
+			<img class="mySlides" src="https://c1.wallpaperflare.com/preview/934/227/750/bookshelf-library-literature-books.jpg" style="width:100%">
+			
+
+			<button class="w3-button w3-black w3-di splay-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+
+
+			
+		  </div>
+		  
+		  <script>
+			var slideIndex = 1;
+			showDivs(slideIndex);
+			
+			function plusDivs(n) {
+			  showDivs(slideIndex += n);
+			}
+			
+			function showDivs(n) {
+			  var i;
+			  var x = document.getElementsByClassName("mySlides");
+			  if (n > x.length) {slideIndex = 1}
+			  if (n < 1) {slideIndex = x.length}
+			  for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";  
+			  }
+			  x[slideIndex-1].style.display = "block";  
+			}
+			
+			</script>
+			
+   <script src="script.js"></script>
+
+</body>
+</html>

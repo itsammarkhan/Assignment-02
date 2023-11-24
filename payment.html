@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&family=Lobster&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: Dancing Script;
+            background-color: rgb(241, 225, 200);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <h1>Reception</h1>
+
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="receipt-items">
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"><strong>Total:</strong></td>
+                    <td id="total-amount">$0.00</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <p class="mt-4">
+            <a href="index.html" class="btn btn-outline-danger">Back to Home</a>
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function getCartData() {
+            const cartData = localStorage.getItem('cart');
+            return cartData ? JSON.parse(cartData) : [];
+        }
+
+        function generateReceipt() {
+            const receiptContainer = document.getElementById('receipt-items');
+            const totalAmountElement = document.getElementById('total-amount');
+            let totalAmount = 0;
+
+            const cartItems = getCartData();
+
+            receiptContainer.innerHTML = '';
+        cartItems.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.title}</td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>${item.quantity}</td>
+                `;
+                receiptContainer.appendChild(row);
+
+                totalAmount += item.price * item.quantity;
+            });
+
+            totalAmountElement.textContent = `$${totalAmount.toFixed(2)}`;
+        }
+
+        generateReceipt();
+    </script>
+
+</body>
+</html>

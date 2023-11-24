@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&family=Lobster&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body {
+    font-family: Arial, sans-serif; 
+    background-color: #f8f9fa;
+}
+
+     
+        .navbar {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+main {
+    padding: 20px;
+}
+
+.category-list {
+    list-style-type: none;
+    padding: 0;
+    width: 150px;
+    flex-wrap: wrap;
+    display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+    
+
+}
+
+.category-item {
+    color: rgb(18, 40, 182);
+    margin: 10px;
+    text-align: center;
+   padding: 7px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+    background-color: rgb(241, 225, 200);
+  
+    border: 1px solid #343a40; /* Dark grey color */
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: Dancing Script; 
+    transition: transform 0.3s ease-in-out; /* Add transition effect */
+}
+
+
+
+.book-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.book-item {
+    border: 10px solid   rgb(232, 207, 166); /* Dark grey color */
+    padding: 10px;
+    color: rgb(170, 126, 13);
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(218, 50, 50, 0.2);
+    font-family: 'YourFont', sans-serif; /* Add font family for book items */
+    transition: box-shadow 0.3s ease-in-out; /* Add transition effect */
+}
+
+
+
+.search-input {
+    border-radius: 10px ;
+    background-color: #FFFFFF;
+    width: 32.5%;
+    border: 3px solid rgb(232, 207, 166);
+    margin-bottom: 10px;
+    padding: 4px;
+    font-family: 'YourFont', sans-serif; /* Add font family for search input */
+}
+
+/* Add animation to navigation links */
+
+
+
+
+    </style>
+</head>
+<body>
+  <header class="header">
+    
+       <nav class="navbar">
+           <a href="INDEX.HTML"><i class="fa fa-fw fa-home"></i>Back To Home</a>
+        
+    </nav>
+  </header>
+  <div class="anotherStyling">
+    
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <main>
+        <section id="categories">
+            <h2 style="font-size: 50px;">Collection</h2>
+            <ul class="category-list" id="categoryList">
+                
+            </ul>
+        </section>
+
+        <section id="books">
+            <h2 style="font-size: 50px;">Books</h2>
+            <input type="text" class="search-input" id="searchInput" placeholder="Enter Book">
+            <ul class="book-list" id="bookList">
+            </ul>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const booksData = [
+        {
+      "id": 1,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "category": "Fiction",
+      "price": 12.99,
+      "description": "Novel about the voyage of the whaling ship Pequod.",
+      "cover_image": "https://m.media-amazon.com/images/I/71eDvxjJB8L._AC_UF350,350_QL80_.jpg"
+    },
+    {
+      "id": 2,
+      "title": "1984",
+      "author": "George Orwell",
+      "category": "Dystopian",
+      "price": 9.99,
+      "description": "Classic dystopian novel about totalitarianism and surveillance.",
+      "cover_image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781534466326/gone-dark-9781534466326_lg.jpg"
+    },
+    {
+      "id": 3,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "category": "Classic",
+      "price": 11.50,
+      "description": "A story of the Jazz Age and the American Dream.",
+      "cover_image": "https://www.hachettebookgroup.com/wp-content/uploads/2020/06/9780762498147-3.jpg?w=640"
+    },
+    {
+      "id": 4,
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "category": "Classic",
+      "price": 13.25,
+      "description": "Novel about the voyage of the whaling ship Pequod.",
+      "cover_image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781534466326/gone-dark-9781534466326_lg.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "category": "Science Fiction",
+      "price": 10.75,
+      "description": "A dystopian social science fiction novel.",
+      "cover_image": "https://m.media-amazon.com/images/I/61CILjxMMDL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "category": "Classic",
+      "price": 9.99,
+      "description": "Classic romantic novel of manners.",
+      "cover_image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1658091188i/61493491.jpg"
+    },
+    {
+      "id": 7,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "category": "Fiction",
+      "price": 8.50,
+      "description": "Novel known for its themes of teenage angst and alienation.",
+      "cover_image": "https://m.media-amazon.com/images/I/61CILjxMMDL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": 8,
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "category": "Fantasy",
+      "price": 15.99,
+      "description": "High-fantasy novel series.",
+      "cover_image": "https://s26162.pcdn.co/wp-content/uploads/2017/05/the-lord-of-the-rings-book-cover.jpg"
+    },
+    {
+      "id": 9,
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "category": "Fantasy",
+      "price": 11.75,
+      "description": "Prequel to The Lord of the Rings.",
+      "cover_image": "https://images.penguinrandomhouse.com/cover/9780345534835g"
+    },
+    {
+      "id": 10,
+      "title": "The Da Vinci Code",
+      "author": "Dan Brown",
+      "category": "Mystery",
+      "price": 14.25,
+      "description": "Mystery thriller novel.",
+      "cover_image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781665918688/a-door-in-the-dark-9781665918688_lg.jpg"
+    },
+    {
+      "id": 11,
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "category": "Fiction",
+      "price": 10.50,
+      "description": "Philosophical novel.",
+      "cover_image": "https://images.penguinrandomhouse.com/cover/9780593133552"
+    },
+    {
+      "id": 12,
+      "title": "A Tale of Two Cities",
+      "author": "Charles Dickens",
+      "category": "Classic",
+      "price": 12.25,
+      "description": "Historical novel set during the French Revolution.",
+      "cover_image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781665918688/a-door-in-the-dark-9781665918688_lg.jpg"
+    },
+    {
+      "id": 13,
+      "title": "War and Peace",
+      "author": "Leo Tolstoy",
+      "category": "Historical Fiction",
+      "price": 16.99,
+      "description": "Epic novel set during the Napoleonic Wars.",
+      "cover_image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1621865980i/58141170.jpg"
+    },
+    {
+      "id": 14,
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "category": "Classic",
+      "price": 11.99,
+      "description": "Gothic and philosophical novel.",
+      "cover_image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781665918688/a-door-in-the-dark-9781665918688_lg.jpg"
+    },
+    {
+      "id": 15,
+      "title": "The Adventures of Huckleberry Finn",
+      "author": "Mark Twain",
+      "category": "Classic",
+      "price": 10.99,
+      "description": "Novel known for its social commentary.",
+      "cover_image": "https://images.penguinrandomhouse.com/cover/9780345534835"
+    },
+    {
+      "id": 16,
+      "title": "Jane Eyre",
+      "author": "Charlotte Bronte",
+      "category": "Classic",
+      "price": 9.50,
+      "description": "Autobiographical novel.",
+      "cover_image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1621865980i/58141170.jpg"
+    },
+    {
+      "id": 17,
+      "title": "The Road",
+      "author": "Cormac McCarthy",
+      "category": "Dystopian",
+      "price": 13.75,
+      "description": "Post-apocalyptic novel.",
+      "cover_image": "https://m.media-amazon.com/images/I/71eDvxjJB8L._AC_UF350,350_QL80_.jpg"
+    },
+    {
+      "id": 18,
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "category": "Gothic",
+      "price": 11.25,
+      "description": "Gothic novel about science and creation.",
+      "cover_image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1621865980i/58141170.jpg"
+    },
+    {
+      "id": 19,
+      "title": "The Stand",
+      "author": "Stephen King",
+      "category": "Horror",
+      "price": 14.50,
+      "description": "Post-apocalyptic horror/fantasy novel.",
+      "cover_image": "https://i.pinimg.com/originals/27/cf/91/27cf91f605923223613909c7b9d2219f.jpg"
+    },
+    {
+      "id": 20,
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "category": "Classic",
+      "price": 12.50,
+      "description": "Psychological novel.",
+      "cover_image": "https://images.penguinrandomhouse.com/cover/9780345534835"
+    },
+    {
+      "id": 21,
+      "title": "Les Miserables",
+      "author": "Victor Hugo",
+      "category": "Classic",
+      "price": 13.99,
+      "description": "Historical novel set in France.",
+      "cover_image": "https://images.penguinrandomhouse.com/cover/9780345534835"
+    },
+    {
+      "id": 22,
+      "title": "The Shining",
+      "author": "Stephen King",
+      "category": "Horror",
+      "price": 11.75,
+      "description": "Horror novel.",
+      "cover_image": "https://www.derangeddoctordesign.com/uploads/2/4/4/7/24472801/contemporary-romance-book-cover-design-ebook-kindle-amazon-neva-altaj-broken-whispers_orig.jpg"
+    },
+    {
+      "id": 23,
+      "title": "The Odyssey",
+      "author": "Homer",
+      "category": "Classic",
+      "price": 10.25,
+      "description": "Ancient Greek epic poem.",
+      "cover_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZu3rVe7t3AsOsiJ5UluWD6f9EOJgc7GaAyw&usqp=CAU"
+    },
+    {
+      "id": 24,
+      "title": "The Stranger",
+      "author": "Albert Camus",
+      "category": "Philosophical",
+      "price": 12.25,
+      "description": "Existential novel.",
+      "cover_image": "https://www.derangeddoctordesign.com/uploads/2/4/4/7/24472801/contemporary-romance-book-cover-design-ebook-kindle-amazon-neva-altaj-broken-whispers_orig.jpg"
+    },
+    {
+      "id": 25,
+      "title": "Gone with the Wind",
+      "author": "Margaret Mitchell",
+      "category": "Historical Fiction",
+      "price": 13.50,
+      "description": "Historical novel set in the American South during the Civil War.",
+      "cover_image": "https://unblast.com/wp-content/uploads/2019/12/Dark-Book-Cover-Mockup-1.jpg"
+    },
+    {
+      "id": 26,
+      "title": "The Kite Runner",
+      "author": "Khaled Hosseini",
+      "category": "Contemporary",
+      "price": 10.99,
+      "description": "Contemporary novel set in Afghanistan.",
+      "cover_image": "https://i.pinimg.com/originals/27/cf/91/27cf91f605923223613909c7b9d2219f.jpg"
+    },
+    {
+      "id": 27,
+      "title": "The Bell Jar",
+      "author": "Sylvia Plath",
+      "category": "Autobiographical",
+      "price": 11.50,
+      "description": "Autobiographical novel.",
+      "cover_image": "https://images-platform.99static.com//SX_Ja1v53f8C1wPKSWJUoGTU7GU=/156x0:1528x1372/fit-in/500x500/99designs-contests-attachments/105/105561/attachment_105561814"
+    },
+    {
+      "id": 28,
+      "title": "The Count of Monte Cristo",
+      "author": "Alexandre Dumas",
+      "category": "Adventure",
+      "price": 12.99,
+      "description": "Adventure novel.",
+      "cover_image": "https://images-platform.99static.com//wvIwHoGCUh1UuZrgVVauM90Xwvo=/428x284:1494x1350/fit-in/500x500/99designs-contests-attachments/111/111474/attachment_111474110"
+    },
+    {
+      "id": 29,
+      "title": "Anna Karenina",
+      "author": "Leo Tolstoy",
+      "category": "Classic",
+      "price": 12.75,
+      "description": "Tragic novel.",
+      "cover_image": "https://i.pinimg.com/originals/27/cf/91/27cf91f605923223613909c7b9d2219f.jpg"
+    },
+    {
+      "id": 30,
+      "title": "The Grapes of Wrath",
+      "author": "John Steinbeck",
+      "category": "Classic",
+      "price": 11.99,
+      "description": "Novel set during the Great Depression.",
+      "cover_image": "https://images-platform.99static.com//wvIwHoGCUh1UuZrgVVauM90Xwvo=/428x284:1494x1350/fit-in/500x500/99designs-contests-attachments/111/111474/attachment_111474110"
+    }
+         
+        ];
+
+        const categories = [...new Set(booksData.map(book => book.category))];
+        const categoryList = document.getElementById('categoryList');
+        categories.forEach(category => {
+            const li = document.createElement('li');
+            li.classList.add('category-item');
+            li.textContent = category;
+            li.addEventListener('click', () => filterBooksByCategory(category));
+            categoryList.appendChild(li);
+        });
+        displayBooks(booksData);
+        function filterBooksByCategory(category) {
+            const filteredBooks = booksData.filter(book => book.category === category);
+            displayBooks(filteredBooks);
+        }
+        function searchBooks() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const filteredBooks = booksData.filter(book =>
+                book.title.toLowerCase().includes(searchInput) ||
+                book.author.toLowerCase().includes(searchInput) ||
+                book.category.toLowerCase().includes(searchInput)
+            );
+            displayBooks(filteredBooks);
+        }
+        function displayBooks(books) {
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = '';
+
+            books.forEach(book => {
+                const li = document.createElement('li');
+                li.classList.add('book-item');
+                li.innerHTML = `
+                    <img src="${book.cover_image}" alt="${book.title}" style="max-width: 100%;">
+                    <h3>${book.title}</h3>
+                    <p>${book.author}</p>
+                    <p>${book.price.toFixed(2)} USD</p>
+                    <p>${book.description}</p>
+                `;
+                bookList.appendChild(li);
+            });
+        }
+        document.getElementById('searchInput').addEventListener('input', searchBooks);
+    </script>
+</body>
+</html>

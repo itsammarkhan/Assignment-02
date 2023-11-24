@@ -1,0 +1,139 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Dancing Script;
+
+
+}
+body {
+	 
+	 background-image: url('');
+}
+.w3-section{
+	height: 80vh;
+	overflow: hidden;
+}
+.w3-display-left {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%,-50%);
+	    }
+	    .w3-display-right {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    transform: translate(0%,-50%);
+    -ms-transform: translate(0%,-50%);
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	border: none;
+	border-radius: 10px;
+}
+
+.w3-display-left{
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	border: none;
+	border-radius: 10px;
+	left: 1%;
+
+}
+
+.header {
+	
+	color: black;
+	width: 100%;
+	padding: 30px;
+	background: transparent;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 100;
+	background-color: rgb(241, 225, 200);
+}
+.logo {
+	text-decoration: none;
+	margin-left: 5%;
+	font-size: 25px;
+	color:rgb(170, 126, 13) ;
+	font-weight: 600;
+	}
+
+.navbar a {
+	font-size: 30px;
+	color: rgb(18, 40, 182);
+	text-decoration: none;
+	font-weight: 500;
+	margin-left: 20px;
+	justify-content: center;
+}
+.img {
+	margin-left: 70%;
+	margin-top: 0%;
+	max-width: 50%;
+    height: 50%;
+    background-color: white;
+    width: 10px;
+	object-fit: contain;
+
+}
+.Home {
+	margin-top: 20%;
+	margin-left: 10%;
+	color: white;
+	font-size: 50PX;
+	font-family: initial;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.heading{
+	position: absolute;
+	z-index: 99;
+	top: 40%;
+	left: 30%;
+	background-color: rgba(128, 128, 128, 0.536);
+	font-weight:900;
+	font-size: 4rem;
+	color: black;
+	text-align: center;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
